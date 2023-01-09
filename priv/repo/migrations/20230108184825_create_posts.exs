@@ -3,10 +3,10 @@ defmodule Chirp.Repo.Migrations.CreatePosts do
 
   def change do
     create table(:posts) do
-      add :username, :string
-      add :body, :string
-      add :likes_count, :integer
-      add :reposts_count, :integer
+      add :username, :string, null: false
+      add :body, :string, null: false
+      add :likes_count, :integer, null: false, default: 0
+      add :reposts_count, :integer, null: false, default: 0
 
       timestamps()
     end

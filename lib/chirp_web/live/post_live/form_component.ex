@@ -20,10 +20,7 @@ defmodule ChirpWeb.PostLive.FormComponent do
         phx-change="validate"
         phx-submit="save"
       >
-        <.input field={{f, :username}} type="text" label="Username" />
-        <.input field={{f, :body}} type="text" label="Body" />
-        <.input field={{f, :likes_count}} type="number" label="Likes count" />
-        <.input field={{f, :reposts_count}} type="number" label="Reposts count" />
+        <.input field={{f, :body}} type="textarea" label="Body" />
         <:actions>
           <.button phx-disable-with="Saving...">Save Post</.button>
         </:actions>

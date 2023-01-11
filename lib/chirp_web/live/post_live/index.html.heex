@@ -1,5 +1,5 @@
 <.header>
-  Listing Posts
+  Timeline
   <:actions>
     <.link patch={~p"/posts/new"}>
       <.button>New Post</.button>
@@ -7,23 +7,14 @@
   </:actions>
 </.header>
 
-<.table id="posts" rows={@posts} row_click={&JS.navigate(~p"/posts/#{&1}")}>
-  <:col :let={post} label="Username"><%= post.username %></:col>
-  <:col :let={post} label="Body"><%= post.body %></:col>
-  <:col :let={post} label="Likes count"><%= post.likes_count %></:col>
-  <:col :let={post} label="Reposts count"><%= post.reposts_count %></:col>
-  <:action :let={post}>
-    <div class="sr-only">
-      <.link navigate={~p"/posts/#{post}"}>Show</.link>
-    </div>
-    <.link patch={~p"/posts/#{post}/edit"}>Edit</.link>
-  </:action>
-  <:action :let={post}>
-    <.link phx-click={JS.push("delete", value: %{id: post.id})} data-confirm="Are you sure?">
-      Delete
-    </.link>
-  </:action>
-</.table>
+<div id="posts">
+  <.live_component
+    :for={post <- @posts}
+    module={ChirpWeb.PostLive.PostComponent}
+    id={post.id}
+    post={post}
+  />
+</div>
 
 <.modal
   :if={@live_action in [:new, :edit]}

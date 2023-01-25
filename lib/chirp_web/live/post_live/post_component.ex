@@ -8,12 +8,10 @@ defmodule ChirpWeb.PostLive.PostComponent do
       <div class="flex-none">
         <img src="https://placekitten.com/160/160" alt="avatar" class="h-20 w-20 rounded" />
       </div>
-      <div class="flex flex-col justify-between grow">
-        <div>
-          <p class="font-semibold">@<%= @post.username %></p>
-          <p class="pb-2"><%= @post.body %></p>
-        </div>
-        <div class="flex justify-between text-xs font-semibold">
+      <div class="flex flex-col grow">
+        <p class="font-semibold">@<%= @post.username %></p>
+        <p class="pb-2"><%= @post.body %></p>
+        <div class="mt-auto flex justify-between text-xs font-semibold">
           <span>
             <Heroicons.heart class="inline-block h-4 w-4 stroke-2" />
             <%= @post.likes_count %>
